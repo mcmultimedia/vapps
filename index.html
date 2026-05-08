@@ -3,103 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Viewplus | View+</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Virgyn Apps | Ghana's Premier Marketplace</title>
+    
+    <!-- PWA Requirements -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a1a">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <style>
+        :root {
+            --primary: #00ff88; /* Accent color for a tech feel */
+            --bg: #121212;
+            --surface: #1e1e1e;
+            --text: #ffffff;
+            --text-secondary: #b3b3b3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000; /* Dark background for PC view */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text);
+        }
+
+        /* The 9:16 Smartphone Container */
+        .app-shell {
+            width: 100%;
+            max-width: 450px; /* Standard phone width on PC */
+            height: 100vh;
+            max-height: 800px; /* Standard phone height on PC */
+            background-color: var(--bg);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        /* Handle PC aspect ratio vs Mobile full screen */
+        @media (max-width: 500px) {
+            .app-shell {
+                max-width: 100%;
+                max-height: 100%;
+                border: none;
+            }
+        }
+
+        /* Header Area */
+        header {
+            padding: 20px;
+            background: var(--surface);
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text);
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .hero-text {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* App Grid Placeholder */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .app-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: #333;
+            border-radius: 12px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Footer / Attribution */
+        footer {
+            padding: 15px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            background: var(--surface);
+        }
+
+        .powered-by {
+            font-weight: bold;
+            color: var(--text);
+            margin-top: 5px;
+        }
+
+        /* Navigation Bar (Mobile Style) */
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 12px;
+            background: var(--surface);
+            border-top: 1px solid #333;
+        }
+
+        .nav-item {
+            font-size: 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Main Mobile Wrapper -->
-    <div class="mobile-container">
-        
-        <!-- Background Layer -->
-        <div class="full-bg"></div>
+    <div class="app-shell">
+        <header>
+            <div class="brand">Virgyn<span>Apps</span></div>
+        </header>
 
-        <!-- 1. The Gatekeeper (Header & Login) -->
-        <section id="gatekeeper">
-            <div class="auth-box">
-                <img src="logo.png" alt="View+" class="main-logo">
-                <h2>Enter Your 24-Hour Ticket Code</h2>
-                
-                <div class="input-group">
-                    <input type="text" id="ticketCode" placeholder="Enter 10-digit code" maxlength="10">
-                    <button onclick="checkTicket()">Start Watching</button>
+        <main>
+            <section class="hero-text">
+                <h2>Ghana’s Premier Marketplace</h2>
+                <p>Curated selection of mobile and web applications crafted by Ghanaian talents.</p>
+            </section>
+
+            <h3 style="font-size: 1rem; margin-bottom: 15px;">Featured Local Apps</h3>
+            
+            <div class="featured-grid">
+                <div class="app-card">
+                    <div class="app-icon">TS</div>
+                    <div style="font-weight: 600;">Trost★r</div>
+                    <div style="font-size: 0.7rem; color: #888;">Transit</div>
                 </div>
-                <p class="cta-text">Need a ticket? Install <strong>Ticket Sella</strong> App to purchase ticket</p>
+                <div class="app-card">
+                    <div class="app-icon">NT</div>
+                    <div style="font-weight: 600;">Ntampi</div>
+                    <div style="font-size: 0.7rem; color: #888;">Lifeline</div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">VJ</div>
+                    <div style="font-weight: 600;">Virgyn Pay</div>
+                    <div style="font-size: 0.7rem; color: #888;">Finance</div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">+</div>
+                    <div style="font-weight: 600;">Submit App</div>
+                    <div style="font-size: 0.7rem; color: #888;">Developers</div>
+                </div>
             </div>
-        </section>
+        </main>
 
-        <!-- 2. Accordion FAQs (Visible before login) -->
-        <section class="faq-section">
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">What is View+? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>View+ is a Pay To View platform designed for trendy and motivated viewers who love to carry their entertainment
-						where ever they go. The platform delivers quality and original video content to a wider audience in Ghana, 
-						Africa and the rest of the world. 99% of contents on The platform are originally produced and owned by viewplus creators.
-						Contents available comprise Movies, Series, Skits, Comedy, Music Videos, Dance Videos,, Poetry and Spoken Word, Features,
-						Documentaries, Tech, Inventions and Futuristic focused Programs, Sports and Games, Shows + More... 
-						Checkout the free section called VFlix that does not require subscription to watch. Everything there is free of charge. 
-						You can watch View+ on any connected gadget in 177+ countries.</p>
-                    </div>
-                </div>
+        <nav>
+            <div class="nav-item active">🏠</div>
+            <div class="nav-item">🔍</div>
+            <div class="nav-item">⬇️</div>
+            <div class="nav-item">👤</div>
+        </nav>
 
-                <div class="accordion-item">
-                    <button class="accordion-header">How much does it cost? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>Access is based on 24-hour tickets purchased via Ticket Sella. Check the Ticket Sella app for current rates.
-						DAILY (24hrs) 1 GHS for users in Ghana and 1 USD for users in other countries</p>
-                    </div>
-                </div>
-				<div class="accordion-item">
-                    <button class="accordion-header">Which Devices can I watch View+ on? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>You can watch View+ on any connected gadget in 177+ countries.</p>
-                    </div>
-                </div>
-                
-				<div class="accordion-item">
-                    <button class="accordion-header">What are your payment methods? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p> MOBILE PAYMENTS - We accept payment via mobile payments for users in Ghana. You can pay via MTN MoMo and Vodacash</p>
-						<p> DEBIT CARD - We accept payment via VISA and MASTERCARD Debit Cards.</p>
-						<p>PAYPAL - We also accept Paypal payments.</p>
-						<p>WHATSAPP PAY - Whatsapp Pay is our preferred mode of payment, aside all the payments method listed above.</p> 
-						<p>Kindly chat us on whatsapp @ +233267171555 for further clarification..</p>
-                    </div>
-                </div>
-				<div class="accordion-item">
-                    <button class="accordion-header">What internet or data do I need to connect? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>Unlike other platforms that forcibly tie you to the use of traditional or legacy mobile data in order to gain connection
-						and access, we give you the freedom to use any form of internet to enjoy viewplus. Data, WiFi, Routers, shared internet, 
-						dedicated or even satellite internet.</p>
-                    </div>
-                </div>
-				<div class="accordion-item">
-                    <button class="accordion-header">Is View+ available in other languages? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>Yes View+ is available in other languages aside English. Find contents in Twi, Ewe, Ga, Mfantse, Dagomba, Hausa and French.</p>
-                    </div>
-                </div>
-				<div class="accordion-item">
-                    <button class="accordion-header">Can I cancel my subscription? <span>+</span></button>
-                    <div class="accordion-content">
-                        <p>With the exception of DAILY & WEEKLY subscriptions, you are free to cancel a MONTHLY or YEARLY subscription anytime, 
-						anywhere. Though we will love to have you use viewplus all the time, if for any reason you decide to cancel any 
-						subscription before its expiration date, we will gladly grant that wish as soon you make that request via our cancel 
-						subscription form.</p>
-                    </div>
-                </div>
-			</div>
-        </section>
-
-        <!-- Footer -->
         <footer>
-            <p>&copy; 2026 viewplus | All Rights Reserved.</p>
+            <div>&copy; 2026 Virgyn Apps Marketplace</div>
+            <div class="powered-by">Powered by MC MULTIMEDIA</div>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(reg => {
+                    console.log('Virgyn Apps SW Registered');
+                }).catch(err => {
+                    console.log('SW Registration Failed', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
